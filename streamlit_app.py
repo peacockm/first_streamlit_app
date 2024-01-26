@@ -40,4 +40,4 @@ streamlit.dataframe(fruityvice_normalized)
 
 
 # for new lesson 
-#import snowflake.connector 
+import snowflake.connector 
