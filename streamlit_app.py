@@ -49,3 +49,11 @@ my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
+
+
+# This is dumb , like everything, but think we're just adding a text box to pull an i/p 
+add_my_fruit = streamlit.text_input('What fruit would you like to add?')
+
+streamlit.write('Thanks for adding ', add_my_fruit)
+
+
