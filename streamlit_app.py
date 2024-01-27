@@ -21,7 +21,6 @@ def get_fruit_load_list():
 streamlit.title("My Mom's New Healthy Diner") 
 
 streamlit.header('Breakfast Favorites')
-
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
 streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
 streamlit.text('🐔 Hard-Boiled Free-Range Egg')
@@ -38,8 +37,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 
 # Display the table on the page.
 streamlit.dataframe(fruits_to_show)
-
-# Added for lesson 9   
 
 streamlit.header("Fruityvice Fruit Advice!")
 try: 
@@ -65,12 +62,19 @@ if streamlit.button('Get fruit load list'):
   
 streamlit.stop()
 
-# This is dumb , like everything, but think we're just adding a text box to pull an i/p 
+# Allow user to add items to the list 
+
 add_my_fruit = streamlit.text_input('What fruit would you like to add?')
 
-streamlit.write('Thanks for adding ', add_my_fruit)
+def insert_row_snowflake(new_fruit):
+  with my_cnx.curseor() as my_cur: 
+      my_cur.execute("insert into fruit_load_list values('from streamlit')")
+      return "Thanks for adding " + new_fruit 
+    
+if streamlit.button('Add a fruit to the list'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  back_from_function = insert_row_snowflake(add_my_fruit)
+  streamlit.text(back_from_function)
 
-
-my_cur.execute("insert into fruit_load_list values('from streamlit')")
 
 
