@@ -51,7 +51,7 @@ except URLerror as e:
   streamlit.error()
 
 
-streamlit.header("View our fruit list - And add your own!:")
+streamlit.header("View our fruit list - And add your own!")
 
 # Add a button to load the fruit 
 if streamlit.button('Get fruit load list'):
